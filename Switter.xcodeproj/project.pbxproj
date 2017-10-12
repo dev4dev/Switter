@@ -12,9 +12,11 @@
 		6354D2861F8F8ACE004210D0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6354D2841F8F8ACE004210D0 /* Main.storyboard */; };
 		6354D2881F8F8ACE004210D0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6354D2871F8F8ACE004210D0 /* Assets.xcassets */; };
 		6354D28B1F8F8ACE004210D0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6354D2891F8F8ACE004210D0 /* LaunchScreen.storyboard */; };
+		FE285CA81B9F06A0EA3F80B5 /* Pods_Switter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 130BDB22739AF8FE1E31DD29 /* Pods_Switter.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		130BDB22739AF8FE1E31DD29 /* Pods_Switter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Switter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6354D27D1F8F8ACE004210D0 /* Switter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Switter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6354D2801F8F8ACE004210D0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6354D2821F8F8ACE004210D0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +24,8 @@
 		6354D2871F8F8ACE004210D0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6354D28A1F8F8ACE004210D0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6354D28C1F8F8ACE004210D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C49876BC1B1AC2D2A72C7586 /* Pods-Switter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Switter.release.xcconfig"; path = "Pods/Target Support Files/Pods-Switter/Pods-Switter.release.xcconfig"; sourceTree = "<group>"; };
+		FE5CAD4CD26F191C6E2CC218 /* Pods-Switter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Switter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Switter/Pods-Switter.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +33,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE285CA81B9F06A0EA3F80B5 /* Pods_Switter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		472DA8736B03A4FAB19D6F20 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				130BDB22739AF8FE1E31DD29 /* Pods_Switter.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		6354D2741F8F8ACE004210D0 = {
 			isa = PBXGroup;
 			children = (
 				6354D27F1F8F8ACE004210D0 /* Switter */,
 				6354D27E1F8F8ACE004210D0 /* Products */,
+				AEDE62132B98273360A4C9FF /* Pods */,
+				472DA8736B03A4FAB19D6F20 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -64,6 +79,15 @@
 			path = Switter;
 			sourceTree = "<group>";
 		};
+		AEDE62132B98273360A4C9FF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FE5CAD4CD26F191C6E2CC218 /* Pods-Switter.debug.xcconfig */,
+				C49876BC1B1AC2D2A72C7586 /* Pods-Switter.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -71,9 +95,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6354D28F1F8F8ACE004210D0 /* Build configuration list for PBXNativeTarget "Switter" */;
 			buildPhases = (
+				FA622A52A6A015476DA9A651 /* [CP] Check Pods Manifest.lock */,
 				6354D2791F8F8ACE004210D0 /* Sources */,
 				6354D27A1F8F8ACE004210D0 /* Frameworks */,
 				6354D27B1F8F8ACE004210D0 /* Resources */,
+				C1F2DC09D2D395818FE2FB2A /* [CP] Embed Pods Frameworks */,
+				783C18E6ADAF1CD43EDC7CE9 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -130,6 +157,64 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		783C18E6ADAF1CD43EDC7CE9 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Switter/Pods-Switter-resources.sh",
+				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework/TwitterKitResources.bundle",
+				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework/TwitterShareExtensionUIResources.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Switter/Pods-Switter-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C1F2DC09D2D395818FE2FB2A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Switter/Pods-Switter-frameworks.sh",
+				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TwitterKit.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Switter/Pods-Switter-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FA622A52A6A015476DA9A651 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Switter-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		6354D2791F8F8ACE004210D0 /* Sources */ = {
@@ -272,6 +357,7 @@
 		};
 		6354D2901F8F8ACE004210D0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FE5CAD4CD26F191C6E2CC218 /* Pods-Switter.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -287,6 +373,7 @@
 		};
 		6354D2911F8F8ACE004210D0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C49876BC1B1AC2D2A72C7586 /* Pods-Switter.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
