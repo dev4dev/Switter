@@ -67,7 +67,7 @@ final class HomeFeedViewController: UIViewController {
 		}.subscribe().disposed(by: trash)
 		listViewController.didPullToRefresh.filter { [unowned self] in
 			return !self.feed.loading
-		}.flatMapLatest { _ -> Observable<[TweetViewModel]> in
+		}.flatMapLatest { [unowned self] _ -> Observable<[TweetViewModel]> in
 			if self.feed.hasData {
 				return self.feed.loadNew()
 			} else {
@@ -92,9 +92,9 @@ final class HomeFeedViewController: UIViewController {
 	private func navigateToLoginScreen() {
 		guard let window = UIApplication.shared.keyWindow else { return }
 
-		let feedVC = LoginViewController(client: client)
+		let loginVC = LoginViewController(client: client)
 		UIView.transition(with: window, duration: 0.5, options: [.transitionFlipFromLeft], animations: {
-			window.rootViewController = feedVC
+			window.rootViewController = loginVC
 		}, completion: nil)
 	}
 

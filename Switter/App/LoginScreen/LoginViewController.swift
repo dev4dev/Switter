@@ -34,8 +34,8 @@ final class LoginViewController: UIViewController {
 		}).disposed(by: trash)
 
 		loginButton.rx.tap.asObservable().flatMapLatest { [unowned self] _ in
-			return self.client.login(with: self)
-		}.subscribe(onNext: { result in
+			return self.client.login()
+		}.subscribe(onNext: { [unowned self] result in
 			if case .failure(let error) = result {
 				UIAlertController.alert(withTitle: "Login Error", for: error).show(in: self)
 			}

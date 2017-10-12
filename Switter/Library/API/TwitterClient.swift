@@ -39,9 +39,9 @@ final class TwitterClient {
 	///
 	/// - Parameter container: Container View Controller
 	/// - Returns: Observable result
-	func login(with container: UIViewController) -> Observable<LoginResult> {
+	func login() -> Observable<LoginResult> {
 		return Observable.create({ obs in
-			self.twitter.logIn(with: container) { (session, error) in
+			self.twitter.logIn { (session, error) in
 				if session != nil {
 					obs.onNext(.success(Void()))
 				} else if let error = error {
