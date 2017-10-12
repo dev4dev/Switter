@@ -67,7 +67,7 @@ final class TwitterClient {
 		})
 	}
 
-	func fetchFeed() -> TwitterFeedPaginatedResult {
+	func homeFeed() -> TwitterFeedPaginatedResult {
 		return TwitterFeedPaginatedResult(client: apiClient, feedURL: "https://api.twitter.com/1.1/statuses/home_timeline.json", count: 20)
 	}
 }

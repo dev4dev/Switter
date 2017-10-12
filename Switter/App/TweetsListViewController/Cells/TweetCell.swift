@@ -24,7 +24,8 @@ final class TweetCell: UITableViewCell {
 		tweetView = TweetView.loadFromXib()
 
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
-		
+
+		selectionStyle = .none
 		contentView.addSubview(tweetView) { make in
 			make.edges.equalToSuperview()
 		}

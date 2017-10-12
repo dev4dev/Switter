@@ -16,8 +16,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	let client: TwitterClient = TwitterClient(keys: SwitterKeys())
 
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+
+		let rootVC: UIViewController
+		if client.isLoggedIn.value {
+			rootVC = HomeFeedViewController(client: client).embedIntoNavigation()
+		} else {
+			rootVC = LoginViewController(client: client)
+		}
 		window = UIWindow(frame: UIScreen.main.bounds)
-		window?.rootViewController = RootViewController(client: client).embedIntoNavigation()
+		window?.rootViewController = rootVC
 		window?.makeKeyAndVisible()
 
 		return true
