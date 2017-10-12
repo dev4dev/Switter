@@ -42,7 +42,7 @@ final class TwitterFeedPaginatedResult {
 		guard let lastTweet = data.value.last else { return .empty() }
 
 		return loadData(with: ["max_id": lastTweet.id]).do(onNext: { [unowned self] tweets in
-			self.data.value += tweets
+			self.data.value += tweets.dropFirst()
 		})
 	}
 
@@ -68,7 +68,7 @@ final class TwitterFeedPaginatedResult {
 
 			strongSelf.loading = false
 			let tweets = TWTRTweet.tweets(withJSONArray: data.toJSONArray()) as! [TWTRTweet]
-			return tweets.dropFirst().map({ tweet in
+			return tweets.map({ tweet in
 				return TweetViewModel(model: tweet)
 			})
 		}
