@@ -7,11 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0AAE997C07AC7BC94CDA65AF /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDF57962CE654004377513C9 /* SnapKit.framework */; };
 		6354D2811F8F8ACE004210D0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6354D2801F8F8ACE004210D0 /* AppDelegate.swift */; };
 		6354D2831F8F8ACE004210D0 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6354D2821F8F8ACE004210D0 /* RootViewController.swift */; };
 		6354D2881F8F8ACE004210D0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6354D2871F8F8ACE004210D0 /* Assets.xcassets */; };
 		6354D28B1F8F8ACE004210D0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6354D2891F8F8ACE004210D0 /* LaunchScreen.storyboard */; };
 		6354D2951F8F8C86004210D0 /* TwitterClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6354D2941F8F8C86004210D0 /* TwitterClient.swift */; };
+		6354D29A1F8F8F93004210D0 /* UIViewController+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6354D2991F8F8F93004210D0 /* UIViewController+Additions.swift */; };
+		6354D29C1F8F93B3004210D0 /* UIView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6354D29B1F8F93B3004210D0 /* UIView+Additions.swift */; };
+		6354D29E1F8F96E9004210D0 /* UIAlertController+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6354D29D1F8F96E9004210D0 /* UIAlertController+Additions.swift */; };
+		6354D2A21F8F98A3004210D0 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6354D2A11F8F98A3004210D0 /* Result.swift */; };
+		6354D2A41F8F9EE3004210D0 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6354D2A31F8F9EE3004210D0 /* SafariServices.framework */; };
 		FE285CA81B9F06A0EA3F80B5 /* Pods_Switter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 130BDB22739AF8FE1E31DD29 /* Pods_Switter.framework */; };
 /* End PBXBuildFile section */
 
@@ -24,6 +30,12 @@
 		6354D28A1F8F8ACE004210D0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6354D28C1F8F8ACE004210D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6354D2941F8F8C86004210D0 /* TwitterClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterClient.swift; sourceTree = "<group>"; };
+		6354D2991F8F8F93004210D0 /* UIViewController+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Additions.swift"; sourceTree = "<group>"; };
+		6354D29B1F8F93B3004210D0 /* UIView+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Additions.swift"; sourceTree = "<group>"; };
+		6354D29D1F8F96E9004210D0 /* UIAlertController+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Additions.swift"; sourceTree = "<group>"; };
+		6354D2A11F8F98A3004210D0 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		6354D2A31F8F9EE3004210D0 /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
+		BDF57962CE654004377513C9 /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = Carthage/Build/iOS/SnapKit.framework; sourceTree = "<group>"; };
 		C49876BC1B1AC2D2A72C7586 /* Pods-Switter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Switter.release.xcconfig"; path = "Pods/Target Support Files/Pods-Switter/Pods-Switter.release.xcconfig"; sourceTree = "<group>"; };
 		FE5CAD4CD26F191C6E2CC218 /* Pods-Switter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Switter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Switter/Pods-Switter.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -33,7 +45,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6354D2A41F8F9EE3004210D0 /* SafariServices.framework in Frameworks */,
 				FE285CA81B9F06A0EA3F80B5 /* Pods_Switter.framework in Frameworks */,
+				0AAE997C07AC7BC94CDA65AF /* SnapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -43,7 +57,9 @@
 		472DA8736B03A4FAB19D6F20 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6354D2A31F8F9EE3004210D0 /* SafariServices.framework */,
 				130BDB22739AF8FE1E31DD29 /* Pods_Switter.framework */,
+				BDF57962CE654004377513C9 /* SnapKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -69,9 +85,9 @@
 		6354D27F1F8F8ACE004210D0 /* Switter */ = {
 			isa = PBXGroup;
 			children = (
+				6354D2961F8F8F69004210D0 /* App */,
 				6354D2921F8F8C75004210D0 /* Library */,
 				6354D2801F8F8ACE004210D0 /* AppDelegate.swift */,
-				6354D2821F8F8ACE004210D0 /* RootViewController.swift */,
 				6354D2871F8F8ACE004210D0 /* Assets.xcassets */,
 				6354D2891F8F8ACE004210D0 /* LaunchScreen.storyboard */,
 				6354D28C1F8F8ACE004210D0 /* Info.plist */,
@@ -82,6 +98,7 @@
 		6354D2921F8F8C75004210D0 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				6354D2981F8F8F86004210D0 /* Extensions */,
 				6354D2931F8F8C7C004210D0 /* API */,
 			);
 			path = Library;
@@ -91,8 +108,35 @@
 			isa = PBXGroup;
 			children = (
 				6354D2941F8F8C86004210D0 /* TwitterClient.swift */,
+				6354D2A11F8F98A3004210D0 /* Result.swift */,
 			);
 			path = API;
+			sourceTree = "<group>";
+		};
+		6354D2961F8F8F69004210D0 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				6354D2971F8F8F74004210D0 /* MainScreen */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		6354D2971F8F8F74004210D0 /* MainScreen */ = {
+			isa = PBXGroup;
+			children = (
+				6354D2821F8F8ACE004210D0 /* RootViewController.swift */,
+			);
+			path = MainScreen;
+			sourceTree = "<group>";
+		};
+		6354D2981F8F8F86004210D0 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				6354D2991F8F8F93004210D0 /* UIViewController+Additions.swift */,
+				6354D29B1F8F93B3004210D0 /* UIView+Additions.swift */,
+				6354D29D1F8F96E9004210D0 /* UIAlertController+Additions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		AEDE62132B98273360A4C9FF /* Pods */ = {
@@ -117,6 +161,7 @@
 				6354D27B1F8F8ACE004210D0 /* Resources */,
 				C1F2DC09D2D395818FE2FB2A /* [CP] Embed Pods Frameworks */,
 				783C18E6ADAF1CD43EDC7CE9 /* [CP] Copy Pods Resources */,
+				15EFB523C15CF4B10F8A36A9 /* Carthage */,
 			);
 			buildRules = (
 			);
@@ -174,6 +219,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		15EFB523C15CF4B10F8A36A9 /* Carthage */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/SnapKit.framework",
+			);
+			name = Carthage;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
 		783C18E6ADAF1CD43EDC7CE9 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -201,11 +261,15 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Switter/Pods-Switter-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Keys/Keys.framework",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Keys.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TwitterKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -238,8 +302,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6354D29C1F8F93B3004210D0 /* UIView+Additions.swift in Sources */,
+				6354D29A1F8F8F93004210D0 /* UIViewController+Additions.swift in Sources */,
 				6354D2831F8F8ACE004210D0 /* RootViewController.swift in Sources */,
 				6354D2951F8F8C86004210D0 /* TwitterClient.swift in Sources */,
+				6354D2A21F8F98A3004210D0 /* Result.swift in Sources */,
+				6354D29E1F8F96E9004210D0 /* UIAlertController+Additions.swift in Sources */,
 				6354D2811F8F8ACE004210D0 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -292,6 +360,10 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -349,6 +421,10 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
