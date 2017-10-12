@@ -59,15 +59,19 @@ final class HomeFeedViewController: UIViewController {
 			make.edges.equalToSuperview()
 		}
 		listViewController.didMove(toParentViewController: self)
-		listViewController.didScrollToEnd.filter({ [unowned self] _ in
+		listViewController.didScrollToEnd.filter({ [unowned self] in
 			return !self.feed.loading
-		}).flatMapLatest { [unowned self] _ in
+		}).flatMapLatest { [unowned self] in
 			return self.feed.loadOld()
 		}.subscribe().disposed(by: trash)
-		listViewController.didPullToRefresh.filter { [unowned self] _ -> Bool in
+		listViewController.didPullToRefresh.filter { [unowned self] in
 			return !self.feed.loading
-		}.flatMapLatest { _ in
-			return self.feed.loadNew()
+		}.flatMapLatest { _ -> Observable<[TweetViewModel]> in
+			if self.feed.hasData {
+				return self.feed.loadNew()
+			} else {
+				return self.feed.start()
+			}
 		}.subscribe().disposed(by: trash)
 		listViewController.didSelectTweetAtIndex.map(feed.tweet).subscribe(onNext: { tweet in
 			print("show details for \(tweet)")
