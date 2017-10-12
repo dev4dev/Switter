@@ -18,8 +18,7 @@ final class TwitterClient {
 	private var twitter: Twitter {
 		return Twitter.sharedInstance()
 	}
-	private lazy var apiClient: TWTRAPIClient =	TWTRAPIClient()
-
+	private lazy var apiClient: TWTRAPIClient =	TWTRAPIClient.withCurrentUser()
 	private(set) lazy var isLoggedIn: Variable<Bool> = Variable(twitter.sessionStore.hasLoggedInUsers())
 
 	init(keys: SwitterKeys) {
@@ -32,6 +31,14 @@ final class TwitterClient {
 		twitter.start(withConsumerKey: keys.apiKey, consumerSecret: keys.apiSecret)
 	}
 
+	func handleOpenUrl(application: UIApplication, url: URL, options: [AnyHashable: Any]) -> Bool {
+		return twitter.application(application, open: url, options: options)
+	}
+
+	/// Log In into App
+	///
+	/// - Parameter container: Container View Controller
+	/// - Returns: Observable result
 	func login(with container: UIViewController) -> Observable<LoginResult> {
 		return Observable.create({ obs in
 			self.twitter.logIn(with: container) { (session, error) in
@@ -45,10 +52,10 @@ final class TwitterClient {
 		})
 	}
 
-	func handleOpenUrl(application: UIApplication, url: URL, options: [AnyHashable: Any]) -> Bool {
-		return twitter.application(application, open: url, options: options)
-	}
 
+	/// Log out from App
+	///
+	/// - Returns: Observable result
 	func logout() -> Observable<Void> {
 		guard let session = self.twitter.sessionStore.session() else {
 			return Observable.just(Void())
@@ -58,5 +65,9 @@ final class TwitterClient {
 			obs.onCompleted()
 			return Disposables.create()
 		})
+	}
+
+	func fetchFeed() -> TwitterFeedPaginatedResult {
+		return TwitterFeedPaginatedResult(client: apiClient, feedURL: "https://api.twitter.com/1.1/statuses/home_timeline.json", count: 2)
 	}
 }

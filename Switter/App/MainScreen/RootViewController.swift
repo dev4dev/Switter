@@ -10,8 +10,9 @@ import UIKit
 import RxSwift
 
 final class RootViewController: UIViewController {
-	fileprivate let trash = DisposeBag()
-	let client: TwitterClient
+	private let trash = DisposeBag()
+	private let client: TwitterClient
+	private var feed: TwitterFeedPaginatedResult?
 
 	// MARK: - UI
 	private var loginButton: UIButton?
@@ -49,6 +50,11 @@ final class RootViewController: UIViewController {
 
 		let menuItem = UIBarButtonItem(title: "Menu", style: .plain, target: self, action: #selector(showUseMenu))
 		navigationItem.rightBarButtonItem = menuItem
+
+		feed = client.fetchFeed()
+		feed?.start().subscribe(onNext: { tweets in
+			print(tweets)
+		}).disposed(by: trash)
 	}
 
 	private func showLoginButton() {
