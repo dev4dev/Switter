@@ -46,9 +46,14 @@ final class RootViewController: UIViewController {
 
 	private func showFeed() {
 		loginButton?.removeFromSuperview()
+
+		let menuItem = UIBarButtonItem(title: "Menu", style: .plain, target: self, action: #selector(showUseMenu))
+		navigationItem.rightBarButtonItem = menuItem
 	}
 
 	private func showLoginButton() {
+		navigationItem.rightBarButtonItem = nil
+
 		let button = UIButton(type: .custom)
 		button.setTitle("LogIn", for: .normal)
 		button.setTitleColor(.blue, for: .normal)
@@ -57,13 +62,22 @@ final class RootViewController: UIViewController {
 		}
 
 		button.rx.tap.asObservable().flatMapLatest { [unowned self] _ in
-			return self.client.logIn(with: self)
+			return self.client.login(with: self)
 		}.subscribe(onNext: { result in
 			if case .failure(let error) = result {
 				UIAlertController.alert(withTitle: "Login Error", for: error).show(in: self)
 			}
 		}).disposed(by: trash)
 		loginButton = button
+	}
+
+	@objc private func showUseMenu() {
+		let vc = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+		vc.addAction(UIAlertAction(title: "Log Out", style: .destructive, handler: { [unowned self] _ in
+			self.client.logout().subscribe().disposed(by: self.trash)
+		}))
+		vc.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+		present(vc, animated: true, completion: nil)
 	}
 }
 
