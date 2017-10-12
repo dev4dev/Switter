@@ -16,6 +16,7 @@ final class RootViewController: UIViewController {
 
 	// MARK: - UI
 	private var loginButton: UIButton?
+	private var listViewController: TweetsListViewController?
 
 	init(client: TwitterClient) {
 		self.client = client
@@ -51,14 +52,33 @@ final class RootViewController: UIViewController {
 		let menuItem = UIBarButtonItem(title: "Menu", style: .plain, target: self, action: #selector(showUseMenu))
 		navigationItem.rightBarButtonItem = menuItem
 
-		feed = client.fetchFeed()
-		feed?.start().subscribe(onNext: { tweets in
-			print(tweets)
+		let homeFeed = client.fetchFeed()
+		homeFeed.start().subscribe().disposed(by: trash)
+		feed = homeFeed
+
+		// list
+		let listVC = TweetsListViewController(dataSource: homeFeed.data.asObservable())
+		addChildViewController(listVC)
+		view.addSubview(listVC.view) { make in
+			make.edges.equalToSuperview()
+		}
+		listVC.didMove(toParentViewController: self)
+		listVC.didScrollToEnd.filter({ _ in
+			return !homeFeed.loading
+		}).flatMapLatest { _ in
+			return homeFeed.loadOld()
+		}.subscribe().disposed(by: trash)
+		listVC.didSelectTweetAtIndex.map(homeFeed.tweet).subscribe(onNext: { tweet in
+			print("show details for \(tweet)")
 		}).disposed(by: trash)
+		listViewController = listVC
 	}
 
 	private func showLoginButton() {
 		navigationItem.rightBarButtonItem = nil
+		listViewController?.willMove(toParentViewController: nil)
+		listViewController?.view.removeFromSuperview()
+		listViewController?.removeFromParentViewController()
 
 		let button = UIButton(type: .custom)
 		button.setTitle("LogIn", for: .normal)

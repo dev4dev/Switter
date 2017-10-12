@@ -16,7 +16,8 @@ final class TwitterFeedPaginatedResult {
 	private let feedURL: String
 	private let count: Int
 
-	private var data: [TWTRTweet] = []
+	private(set) var data: Variable<[TweetViewModel]> = Variable([])
+	private(set) var loading: Bool = false
 
 	init(client: TWTRAPIClient, feedURL: String, count: Int = 20) {
 		self.client = client
@@ -24,38 +25,52 @@ final class TwitterFeedPaginatedResult {
 		self.count = count
 	}
 
-	func start() -> Observable<[TWTRTweet]> {
-		guard data.isEmpty else { return .empty() }
+	func tweet(at index: Int) -> TweetViewModel? {
+		guard index < data.value.count else { return nil }
+		return data.value[index]
+	}
+
+	func start() -> Observable<[TweetViewModel]> {
+		guard data.value.isEmpty else { return .empty() }
 
 		return loadData().do(onNext: { [unowned self] tweets in
-			self.data = tweets
+			self.data.value = tweets
 		})
 	}
 
-	func loadOld() -> Observable<[TWTRTweet]> {
-		guard let lastTweet = data.last else { return .empty() }
+	func loadOld() -> Observable<[TweetViewModel]> {
+		guard let lastTweet = data.value.last else { return .empty() }
 
-		return loadData(with: ["max_id": lastTweet.tweetID]).do(onNext: { [unowned self] tweets in
-			self.data += tweets
+		return loadData(with: ["max_id": lastTweet.id]).do(onNext: { [unowned self] tweets in
+			self.data.value += tweets
 		})
 	}
 
-	func loadNew() -> Observable<[TWTRTweet]> {
-		guard let firstTweet = data.first else { return .empty() }
+	func loadNew() -> Observable<[TweetViewModel]> {
+		guard let firstTweet = data.value.first else { return .empty() }
 
-		return loadData(with: ["since_id": firstTweet.tweetID]).do(onNext: { [unowned self] tweets in
-			self.data = tweets + self.data
+		return loadData(with: ["since_id": firstTweet.id]).do(onNext: { [unowned self] tweets in
+			self.data.value = tweets + self.data.value
 		})
-}
+	}
 
-	private func loadData(with parameters: [AnyHashable: Any] = [:]) -> Observable<[TWTRTweet]> {
+	private func loadData(with parameters: [AnyHashable: Any] = [:]) -> Observable<[TweetViewModel]> {
+		guard !loading else { return .empty() }
+
+		loading = true
 		let defaults: [AnyHashable: Any] = ["count": "\(count)"]
 		let params = parameters.merging(defaults) { (old, _) -> Any in
 			return old
 		}
 		let request = client.urlRequest(withMethod: "GET", url: feedURL, parameters: params, error: nil)
-		return client.sendRequest(request).map { data in
-			return TWTRTweet.tweets(withJSONArray: data.toJSONArray()) as! [TWTRTweet]
+		return client.sendRequest(request).map { [weak self] data in
+			guard let strongSelf = self else { return [] }
+
+			strongSelf.loading = false
+			let tweets = TWTRTweet.tweets(withJSONArray: data.toJSONArray()) as! [TWTRTweet]
+			return tweets.dropFirst().map({ tweet in
+				return TweetViewModel(model: tweet)
+			})
 		}
 	}
 }

@@ -14,4 +14,12 @@ extension UIView {
 		addSubview(view)
 		view.snp.makeConstraints(layout)
 	}
+
+	class func loadFromXib(inBundle bundle: Bundle = Bundle.main) -> Self {
+		func helper<T>() -> T {
+			return bundle.loadNibNamed(String(describing: self), owner: nil, options: nil)?.first as! T
+		}
+
+		return helper()
+	}
 }
