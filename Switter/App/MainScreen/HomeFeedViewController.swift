@@ -47,6 +47,7 @@ final class HomeFeedViewController: UIViewController {
 
 	private func setupUI() {
 		navigationItem.title = "Switter 🐦"
+		navigationItem.backBarButtonItem = UIBarButtonItem(title: "Feed", style: .plain, target: nil, action: nil)
 		view.backgroundColor = .white
 
 		let menuItem = UIBarButtonItem(title: "Menu", style: .plain, target: self, action: #selector(showUseMenu))
