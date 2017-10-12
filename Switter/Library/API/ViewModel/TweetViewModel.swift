@@ -29,7 +29,7 @@ final class TweetViewModel {
 
 	var authorName: String {
 		if model.retweeted != nil {
-			return sourceModel.author.name + " (\(model.author.name))"
+			return model.author.name + " 🔁 " + sourceModel.author.name
 		} else {
 			return model.author.name
 		}

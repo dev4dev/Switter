@@ -15,8 +15,7 @@ final class HomeFeedViewController: UIViewController {
 	private let feed: TwitterFeedPaginatedResult
 
 	// MARK: - UI
-	private var loginButton: UIButton?
-	private var listViewController: TweetsListViewController?
+	private var listViewController: TweetsListViewController!
 
 	init(client: TwitterClient) {
 		self.client = client
@@ -54,21 +53,25 @@ final class HomeFeedViewController: UIViewController {
 		navigationItem.rightBarButtonItem = menuItem
 
 		// list
-		let listVC = TweetsListViewController(dataSource: feed.data.asObservable())
-		addChildViewController(listVC)
-		view.addSubview(listVC.view) { make in
+		listViewController = TweetsListViewController(dataSource: feed.data.asObservable())
+		addChildViewController(listViewController)
+		view.addSubview(listViewController.view) { make in
 			make.edges.equalToSuperview()
 		}
-		listVC.didMove(toParentViewController: self)
-		listVC.didScrollToEnd.filter({ [unowned self] _ in
+		listViewController.didMove(toParentViewController: self)
+		listViewController.didScrollToEnd.filter({ [unowned self] _ in
 			return !self.feed.loading
 		}).flatMapLatest { [unowned self] _ in
 			return self.feed.loadOld()
 		}.subscribe().disposed(by: trash)
-		listVC.didSelectTweetAtIndex.map(feed.tweet).subscribe(onNext: { tweet in
+		listViewController.didPullToRefresh.filter { [unowned self] _ -> Bool in
+			return !self.feed.loading
+		}.flatMapLatest { _ in
+			return self.feed.loadNew()
+		}.subscribe().disposed(by: trash)
+		listViewController.didSelectTweetAtIndex.map(feed.tweet).subscribe(onNext: { tweet in
 			print("show details for \(tweet)")
 		}).disposed(by: trash)
-		listViewController = listVC
 	}
 
 	@objc private func showUseMenu() {

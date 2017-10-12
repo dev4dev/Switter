@@ -15,6 +15,7 @@ final class TweetsListViewController: UIViewController {
 	private let trash = DisposeBag()
 	private let dataSource: Observable<[TweetViewModel]>
 	let didScrollToEnd = PublishSubject<Void>()
+	let didPullToRefresh = PublishSubject<Void>()
 	let didSelectTweetAtIndex = PublishSubject<Int>()
 
 	init(dataSource: Observable<[TweetViewModel]>) {
@@ -49,10 +50,16 @@ final class TweetsListViewController: UIViewController {
 		view.addSubview(tableView) { make in
 			make.edges.equalToSuperview()
 		}
+
+		let refreshControl = UIRefreshControl()
+		refreshControl.rx.controlEvent(.valueChanged).bind(to: didPullToRefresh.asObserver()).disposed(by: trash)
+		tableView.refreshControl = refreshControl
 	}
 
 	private func setupBindings() {
-		dataSource.bind(to: tableView.rx.items(cellIdentifier: TweetCell.identifier, cellType: TweetCell.self) ) { row, element, cell in
+		dataSource.do(onNext: { [unowned self] _ in
+			self.tableView.refreshControl?.endRefreshing()
+		}).bind(to: tableView.rx.items(cellIdentifier: TweetCell.identifier, cellType: TweetCell.self) ) { row, element, cell in
 			cell.viewModel = element
 		}.disposed(by: trash)
 	}
