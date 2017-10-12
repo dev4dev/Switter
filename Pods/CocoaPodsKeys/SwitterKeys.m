@@ -13,8 +13,8 @@
 
 @implementation SwitterKeys
 
-  @dynamic apiKey;
   @dynamic apiSecret;
+  @dynamic apiKey;
 
 #pragma clang diagnostic pop
 
@@ -23,12 +23,12 @@
   NSString *key = NSStringFromSelector(name);
   NSString * (*implementation)(SwitterKeys *, SEL) = NULL;
 
-  if ([key isEqualToString:@"apiKey"]) {
-    implementation = _podKeysc9ff119073ea2567730fb42e3a4fe805;
-  }
-
   if ([key isEqualToString:@"apiSecret"]) {
     implementation = _podKeys55b7d7c49fac626b70e093b75d118c51;
+  }
+
+  if ([key isEqualToString:@"apiKey"]) {
+    implementation = _podKeysc9ff119073ea2567730fb42e3a4fe805;
   }
 
   if (!implementation) {
@@ -38,34 +38,34 @@
   return class_addMethod([self class], name, (IMP)implementation, "@@:");
 }
 
-static NSString *_podKeysc9ff119073ea2567730fb42e3a4fe805(SwitterKeys *self, SEL _cmd)
-{
-  
-    
-      char cString[26] = { SwitterKeysData[938], SwitterKeysData[465], SwitterKeysData[2125], SwitterKeysData[1428], SwitterKeysData[112], SwitterKeysData[1995], SwitterKeysData[1410], SwitterKeysData[489], SwitterKeysData[1506], SwitterKeysData[1715], SwitterKeysData[1139], SwitterKeysData[1050], SwitterKeysData[1730], SwitterKeysData[1363], SwitterKeysData[1254], SwitterKeysData[1082], SwitterKeysData[765], SwitterKeysData[2078], SwitterKeysData[740], SwitterKeysData[565], SwitterKeysData[825], SwitterKeysData[555], SwitterKeysData[1853], SwitterKeysData[1764], SwitterKeysData[1137], '\0' };
-    
-    return [NSString stringWithCString:cString encoding:NSUTF8StringEncoding];
-  
-}
-
 static NSString *_podKeys55b7d7c49fac626b70e093b75d118c51(SwitterKeys *self, SEL _cmd)
 {
   
     
-      char cString[51] = { SwitterKeysData[335], SwitterKeysData[1664], SwitterKeysData[1931], SwitterKeysData[1170], SwitterKeysData[742], SwitterKeysData[1625], SwitterKeysData[530], SwitterKeysData[117], SwitterKeysData[1578], SwitterKeysData[1128], SwitterKeysData[1300], SwitterKeysData[587], SwitterKeysData[1672], SwitterKeysData[1102], SwitterKeysData[1332], SwitterKeysData[560], SwitterKeysData[1933], SwitterKeysData[833], SwitterKeysData[1965], SwitterKeysData[178], SwitterKeysData[1688], SwitterKeysData[94], SwitterKeysData[68], SwitterKeysData[215], SwitterKeysData[481], SwitterKeysData[731], SwitterKeysData[1480], SwitterKeysData[1190], SwitterKeysData[490], SwitterKeysData[709], SwitterKeysData[1572], SwitterKeysData[1356], SwitterKeysData[2091], SwitterKeysData[1734], SwitterKeysData[37], SwitterKeysData[1383], SwitterKeysData[282], SwitterKeysData[1618], SwitterKeysData[1872], SwitterKeysData[14], SwitterKeysData[149], SwitterKeysData[863], SwitterKeysData[1472], SwitterKeysData[2182], SwitterKeysData[423], SwitterKeysData[1768], SwitterKeysData[1816], SwitterKeysData[277], SwitterKeysData[176], SwitterKeysData[1836], '\0' };
+      char cString[51] = { SwitterKeysData[14], SwitterKeysData[1632], SwitterKeysData[1859], SwitterKeysData[1099], SwitterKeysData[48], SwitterKeysData[2170], SwitterKeysData[2224], SwitterKeysData[1429], SwitterKeysData[779], SwitterKeysData[2255], SwitterKeysData[1869], SwitterKeysData[109], SwitterKeysData[844], SwitterKeysData[1005], SwitterKeysData[2228], SwitterKeysData[802], SwitterKeysData[1785], SwitterKeysData[809], SwitterKeysData[1977], SwitterKeysData[1365], SwitterKeysData[853], SwitterKeysData[1934], SwitterKeysData[1037], SwitterKeysData[1957], SwitterKeysData[817], SwitterKeysData[1529], SwitterKeysData[1661], SwitterKeysData[246], SwitterKeysData[432], SwitterKeysData[1860], SwitterKeysData[994], SwitterKeysData[174], SwitterKeysData[1748], SwitterKeysData[739], SwitterKeysData[1000], SwitterKeysData[26], SwitterKeysData[351], SwitterKeysData[309], SwitterKeysData[1783], SwitterKeysData[1609], SwitterKeysData[714], SwitterKeysData[1818], SwitterKeysData[2214], SwitterKeysData[1663], SwitterKeysData[1451], SwitterKeysData[1104], SwitterKeysData[1116], SwitterKeysData[1349], SwitterKeysData[1334], SwitterKeysData[1280], '\0' };
+    
+    return [NSString stringWithCString:cString encoding:NSUTF8StringEncoding];
+  
+}
+
+static NSString *_podKeysc9ff119073ea2567730fb42e3a4fe805(SwitterKeys *self, SEL _cmd)
+{
+  
+    
+      char cString[26] = { SwitterKeysData[1501], SwitterKeysData[2248], SwitterKeysData[1846], SwitterKeysData[1019], SwitterKeysData[1746], SwitterKeysData[2100], SwitterKeysData[1249], SwitterKeysData[580], SwitterKeysData[91], SwitterKeysData[1148], SwitterKeysData[716], SwitterKeysData[2223], SwitterKeysData[276], SwitterKeysData[746], SwitterKeysData[155], SwitterKeysData[16], SwitterKeysData[2213], SwitterKeysData[1706], SwitterKeysData[65], SwitterKeysData[1772], SwitterKeysData[1243], SwitterKeysData[1885], SwitterKeysData[1290], SwitterKeysData[1825], SwitterKeysData[1756], '\0' };
     
     return [NSString stringWithCString:cString encoding:NSUTF8StringEncoding];
   
 }
 
 
-static char SwitterKeysData[2202] = "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\\\"";
+static char SwitterKeysData[2302] = "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\\\"";
 
 - (NSString *)description
 {
   return [@{
-            @"apiKey": self.apiKey,
             @"apiSecret": self.apiSecret,
+            @"apiKey": self.apiKey,
   } description];
 }
 

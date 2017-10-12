@@ -10,8 +10,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SwitterKeys : NSObject
 
-@property (readonly) NSString *apiKey;
 @property (readonly) NSString *apiSecret;
+@property (readonly) NSString *apiKey;
 
 @end
 

@@ -1,11 +1,16 @@
 PODS:
   - Keys (1.0.0)
+  - RxCocoa (4.0.0-rc.0):
+    - RxSwift (~> 4.0.0-rc.0)
+  - RxSwift (4.0.0-rc.0)
   - TwitterCore (3.0.1)
   - TwitterKit (3.2.0):
     - TwitterCore (>= 3.0.1)
 
 DEPENDENCIES:
   - Keys (from `Pods/CocoaPodsKeys`)
+  - RxCocoa (= 4.0.0-rc.0)
+  - RxSwift (= 4.0.0-rc.0)
   - TwitterKit (~> 3.2)
 
 EXTERNAL SOURCES:
@@ -14,9 +19,11 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Keys: 9c35bf00f612ee1d48556f4a4b9b4551e224e90f
+  RxCocoa: 62457355be73369670fbdf053a79a491552b64ed
+  RxSwift: 1dd09ceb11531c39adff4efe23556b1484e16967
   TwitterCore: 6856288a1c25e5281363250681f33b42fce1da42
   TwitterKit: 1d29948490efba8d07a1bda829abb82f42cbd9ca
 
-PODFILE CHECKSUM: beb4fb75dda6aa210d561d621f7cfce30511b9f4
+PODFILE CHECKSUM: f239bb39964d99edd77eb8e289abbfc6b0fbcdf3
 
 COCOAPODS: 1.3.1

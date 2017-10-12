@@ -15,4 +15,6 @@ target 'Switter' do
 
   # Pods for Switter
   pod 'TwitterKit', '~> 3.2'
+  pod 'RxSwift', '4.0.0-rc.0'
+  pod 'RxCocoa', '4.0.0-rc.0'
 end
