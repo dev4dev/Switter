@@ -16,6 +16,7 @@ extension TWTRAPIClient {
 			let progress = self.sendTwitterRequest(request) { (_, data, error) in
 				if let data = data {
 					obs.onNext(data)
+					obs.onCompleted()
 				} else if let error = error {
 					obs.onError(error)
 				}
