@@ -73,8 +73,9 @@ final class HomeFeedViewController: UIViewController {
 				return self.feed.start()
 			}
 		}.subscribe().disposed(by: trash)
-		listViewController.didSelectTweetAtIndex.map(feed.tweet).subscribe(onNext: { tweet in
-			print("show details for \(tweet)")
+		listViewController.didSelectTweetAtIndex.map(feed.tweet).subscribe(onNext: { [weak self] tweet in
+			guard let tweet = tweet else { return }
+			self?.showDetails(for: tweet)
 		}).disposed(by: trash)
 	}
 
@@ -94,6 +95,11 @@ final class HomeFeedViewController: UIViewController {
 		UIView.transition(with: window, duration: 0.5, options: [.transitionFlipFromLeft], animations: {
 			window.rootViewController = feedVC
 		}, completion: nil)
+	}
+
+	private func showDetails(for tweet: TweetViewModel) {
+		let vc = DetailsViewController(viewModel: tweet)
+		navigationController?.pushViewController(vc, animated: true)
 	}
 }
 
