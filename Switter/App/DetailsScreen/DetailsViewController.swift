@@ -7,14 +7,18 @@
 //
 
 import UIKit
+import RxSwift
 
 final class DetailsViewController: UIViewController {
+	private let trash = DisposeBag()
 
 	private let viewModel: TweetViewModel
+	private let client: TwitterClient
 	private var tweetView: TweetView!
 
-	init(viewModel: TweetViewModel) {
+	init(viewModel: TweetViewModel, client: TwitterClient) {
 		self.viewModel = viewModel
+		self.client = client
 		super.init(nibName: nil, bundle: nil)
 	}
 
@@ -31,6 +35,8 @@ final class DetailsViewController: UIViewController {
 	private func setupUI() {
 		navigationItem.title = viewModel.title
 		view.backgroundColor = .white
+		let menuItem = UIBarButtonItem(title: "°°°", style: .plain, target: self, action: #selector(showMenu))
+		navigationItem.rightBarButtonItem = menuItem
 		
 		tweetView = TweetView.loadFromXib()
 		view.addSubview(tweetView) { make in
@@ -42,5 +48,24 @@ final class DetailsViewController: UIViewController {
 			make.left.right.equalToSuperview()
 		}
 		tweetView.viewModel = viewModel
+	}
+
+	@objc private func showMenu() {
+		let vc = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+		vc.addAction(UIAlertAction(title: "Retweet", style: .default, handler: { [unowned self] _ in
+			self.client.retweet(tweetID: self.viewModel.id).subscribe({ event in
+				print(event)
+				switch event {
+				case .completed:
+					UIAlertController.info(withTitle: "Retweet", message: "Successfully!").show(in: self)
+				case .error(let error):
+					UIAlertController.alert(withTitle: "Request Error", for: error).show(in: self)
+				default:
+					break
+				}
+			}).disposed(by: self.trash)
+		}))
+		vc.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+		present(vc, animated: true, completion: nil)
 	}
 }

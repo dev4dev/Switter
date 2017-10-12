@@ -8,9 +8,11 @@
 
 import Foundation
 import TwitterKit
+import RxSwift
 
 final class TweetViewModel {
 	private let model: TWTRTweet
+
 	init(model: TWTRTweet) {
 		self.model = model
 	}

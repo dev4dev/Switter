@@ -99,7 +99,7 @@ final class HomeFeedViewController: UIViewController {
 	}
 
 	private func showDetails(for tweet: TweetViewModel) {
-		let vc = DetailsViewController(viewModel: tweet)
+		let vc = DetailsViewController(viewModel: tweet, client: client)
 		navigationController?.pushViewController(vc, animated: true)
 	}
 }

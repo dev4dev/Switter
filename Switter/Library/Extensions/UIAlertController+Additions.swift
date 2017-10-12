@@ -15,6 +15,12 @@ extension UIAlertController {
 		return vc
 	}
 
+	static func info(withTitle title: String, message: String) -> UIAlertController {
+		let vc = UIAlertController(title: title, message: message, preferredStyle: .alert)
+		vc.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+		return vc
+	}
+
 	func show(in controller: UIViewController) {
 		controller.present(self, animated: true, completion: nil)
 	}

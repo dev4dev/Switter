@@ -70,4 +70,12 @@ final class TwitterClient {
 	func homeFeed() -> TwitterFeedPaginatedResult {
 		return TwitterFeedPaginatedResult(client: apiClient, feedURL: "https://api.twitter.com/1.1/statuses/home_timeline.json", count: 20)
 	}
+
+	func retweet(tweetID: String) -> Observable<TweetViewModel?> {
+		let request = self.apiClient.urlRequest(withMethod: "POST", url: "https://api.twitter.com/1.1/statuses/retweet/\(tweetID).json", parameters: [:], error: nil)
+		return self.apiClient.sendRequest(request).map({ data in
+			guard let tweet = TWTRTweet.init(jsonDictionary: data.toJSONDict()) else { return nil }
+			return TweetViewModel(model: tweet)
+		})
+	}
 }
