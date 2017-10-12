@@ -8,10 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		6354D2811F8F8ACE004210D0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6354D2801F8F8ACE004210D0 /* AppDelegate.swift */; };
-		6354D2831F8F8ACE004210D0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6354D2821F8F8ACE004210D0 /* ViewController.swift */; };
-		6354D2861F8F8ACE004210D0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6354D2841F8F8ACE004210D0 /* Main.storyboard */; };
+		6354D2831F8F8ACE004210D0 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6354D2821F8F8ACE004210D0 /* RootViewController.swift */; };
 		6354D2881F8F8ACE004210D0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6354D2871F8F8ACE004210D0 /* Assets.xcassets */; };
 		6354D28B1F8F8ACE004210D0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6354D2891F8F8ACE004210D0 /* LaunchScreen.storyboard */; };
+		6354D2951F8F8C86004210D0 /* TwitterClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6354D2941F8F8C86004210D0 /* TwitterClient.swift */; };
 		FE285CA81B9F06A0EA3F80B5 /* Pods_Switter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 130BDB22739AF8FE1E31DD29 /* Pods_Switter.framework */; };
 /* End PBXBuildFile section */
 
@@ -19,11 +19,11 @@
 		130BDB22739AF8FE1E31DD29 /* Pods_Switter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Switter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6354D27D1F8F8ACE004210D0 /* Switter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Switter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6354D2801F8F8ACE004210D0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		6354D2821F8F8ACE004210D0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		6354D2851F8F8ACE004210D0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		6354D2821F8F8ACE004210D0 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		6354D2871F8F8ACE004210D0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6354D28A1F8F8ACE004210D0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6354D28C1F8F8ACE004210D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6354D2941F8F8C86004210D0 /* TwitterClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterClient.swift; sourceTree = "<group>"; };
 		C49876BC1B1AC2D2A72C7586 /* Pods-Switter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Switter.release.xcconfig"; path = "Pods/Target Support Files/Pods-Switter/Pods-Switter.release.xcconfig"; sourceTree = "<group>"; };
 		FE5CAD4CD26F191C6E2CC218 /* Pods-Switter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Switter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Switter/Pods-Switter.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -69,14 +69,30 @@
 		6354D27F1F8F8ACE004210D0 /* Switter */ = {
 			isa = PBXGroup;
 			children = (
+				6354D2921F8F8C75004210D0 /* Library */,
 				6354D2801F8F8ACE004210D0 /* AppDelegate.swift */,
-				6354D2821F8F8ACE004210D0 /* ViewController.swift */,
-				6354D2841F8F8ACE004210D0 /* Main.storyboard */,
+				6354D2821F8F8ACE004210D0 /* RootViewController.swift */,
 				6354D2871F8F8ACE004210D0 /* Assets.xcassets */,
 				6354D2891F8F8ACE004210D0 /* LaunchScreen.storyboard */,
 				6354D28C1F8F8ACE004210D0 /* Info.plist */,
 			);
 			path = Switter;
+			sourceTree = "<group>";
+		};
+		6354D2921F8F8C75004210D0 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				6354D2931F8F8C7C004210D0 /* API */,
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
+		6354D2931F8F8C7C004210D0 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				6354D2941F8F8C86004210D0 /* TwitterClient.swift */,
+			);
+			path = API;
 			sourceTree = "<group>";
 		};
 		AEDE62132B98273360A4C9FF /* Pods */ = {
@@ -123,7 +139,7 @@
 				TargetAttributes = {
 					6354D27C1F8F8ACE004210D0 = {
 						CreatedOnToolsVersion = 9.0;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -152,7 +168,6 @@
 			files = (
 				6354D28B1F8F8ACE004210D0 /* LaunchScreen.storyboard in Resources */,
 				6354D2881F8F8ACE004210D0 /* Assets.xcassets in Resources */,
-				6354D2861F8F8ACE004210D0 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -185,10 +200,12 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Switter/Pods-Switter-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Keys/Keys.framework",
 				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Keys.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TwitterKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -221,7 +238,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6354D2831F8F8ACE004210D0 /* ViewController.swift in Sources */,
+				6354D2831F8F8ACE004210D0 /* RootViewController.swift in Sources */,
+				6354D2951F8F8C86004210D0 /* TwitterClient.swift in Sources */,
 				6354D2811F8F8ACE004210D0 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -229,14 +247,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		6354D2841F8F8ACE004210D0 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				6354D2851F8F8ACE004210D0 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		6354D2891F8F8ACE004210D0 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -360,12 +370,15 @@
 			baseConfigurationReference = FE5CAD4CD26F191C6E2CC218 /* Pods-Switter.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = ETHW6PAC6R;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = E987EZ8M6L;
 				INFOPLIST_FILE = Switter/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = me.antonyuk.Switter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "4d0b38c3-cb07-4aad-a8be-9b3207e1c030";
+				PROVISIONING_PROFILE_SPECIFIER = Global;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -376,12 +389,14 @@
 			baseConfigurationReference = C49876BC1B1AC2D2A72C7586 /* Pods-Switter.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = ETHW6PAC6R;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Switter/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = me.antonyuk.Switter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
